@@ -7,7 +7,6 @@
  * vector末尾添加一个元素：vector.push_back()
  * 遍历vector：T i in vector<T>
  * 判断空串：string.empty()
- *
  */
 
 #include <iostream>
