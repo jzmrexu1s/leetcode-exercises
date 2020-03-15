@@ -18,7 +18,7 @@ public:
         }
         long end = dividend;
         long sor = divisor;
-        bool isPos = ((end > 0 && sor > 0) || (end < 0 && sor < 0)) ? true: false;
+        bool isPos = (end > 0 && sor > 0) || (end < 0 && sor < 0);
         end = abs(end);
         sor = abs(sor);
         if (isPos) return divStep(end, sor);
