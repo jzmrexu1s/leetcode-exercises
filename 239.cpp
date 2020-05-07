@@ -2,6 +2,12 @@
 // Created by Chengwei Zhang on 5/7/20.
 //
 
+#include <iostream>
+#include <string>
+#include <unordered_map>
+#include <vector>
+using namespace std;
+
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
