@@ -2,10 +2,6 @@
 // Created by Chengwei Zhang on 5/5/20.
 //
 
-/*
-
- */
-
 /**
  * Definition for singly-linked list.
  * struct ListNode {
