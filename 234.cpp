@@ -2,6 +2,8 @@
 // Created by Chengwei Zhang on 5/11/20.
 //
 
+// 使用递归方法。也可以使用反转链表的方法。
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
