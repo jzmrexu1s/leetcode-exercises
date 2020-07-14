@@ -8,39 +8,37 @@
 #include <vector>
 #include <algorithm>
 
-int p[10000];
-int s[1000000];
-int nxt[10000];
-
 using namespace std;
 
-int* makeNext(int sz) {
-    nxt[0] = 0;
+int* makeNext(int* p, int sz) {
+    int* next = new int[sz];
+    next[0] = 0;
     int x = 1;
     int now = 0;
     while (x < sz) {
         if (p[now] == p[x]) {
             now += 1;
             x += 1;
-            nxt[x - 1] = now;
+            next[x - 1] = now;
         }
-        else if (now != 0) now = nxt[now - 1];
+        else if (now != 0) now = next[now - 1];
         else {
-            nxt[x] = 0;
+            next[x] = 0;
             x += 1;
         }
     }
+    return next;
 }
 
-int match(int ssz, int psz) {
+int match(int* s, int* p, int* next, int ssz, int psz) {
     int sc = 0;
     int pc = 0;
-    while (sc < ssz && pc < psz) {
+    while (sc < ssz) {
         if (s[sc] == p[pc]) {
             sc += 1;
             pc += 1;
         }
-        else if (pc > 0) pc = nxt[pc - 1];
+        else if (pc > 0) pc = next[pc - 1];
         else sc += 1;
 
         if (pc == psz) return sc - pc;
@@ -54,6 +52,8 @@ int main() {
     while (cases > 0) {
         int slen, plen;
         scanf("%d%d", &slen, &plen);
+        int* s = new int[slen];
+        int* p = new int[plen];
         for (int i = 0; i < slen; i ++) {
             int t;
             scanf("%d", &t);
@@ -64,9 +64,8 @@ int main() {
             scanf("%d", &t);
             p[i] = t;
         }
-        makeNext(plen);
-        cout << match(slen, plen) + 1 << endl;
+        int* next = makeNext(p, plen);
+        cout << match(s, p, next, slen, plen) + 1 << endl;
         cases --;
     }
 }
-
